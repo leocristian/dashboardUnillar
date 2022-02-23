@@ -1,0 +1,11 @@
+POST https://localhost:8000/api/uploadData
+content-type: application/json
+
+{
+    "tablename": "vendedores",
+    "filename": "ABC_vendedores.xls"
+}
+
+###
+
+GET https://localhost:8000/api/getInfo/ISAIAS HTTP/1.1
