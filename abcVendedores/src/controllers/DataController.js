@@ -11,9 +11,9 @@ class DataController {
         return res.send( result.rows )
     }
     async getYearInfo(req, res) {
-        const { year } = req.params
+        const { year, cod } = req.params
         
-        const result = await client.query(`SELECT * FROM vendedores WHERE ano = '${year}'`)
+        const result = await client.query(`SELECT * FROM vendedores WHERE ano = '${year}' and cod = '${cod}'`)
         
         console.log(result.rows);
 
