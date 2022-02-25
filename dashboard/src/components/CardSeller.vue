@@ -2,7 +2,7 @@
 	<div class="seller-container">
 		<AvatarComponent />
 		<div class="seller-info">
-			<span class="name">Nome: {{ sellerName }}</span> <br>
+			<span class="name">{{ sellerName }}</span> <br>
 			<span class="totalValue">Vendas: R$ {{ totalValue }}</span>
 		</div>
 	</div>
@@ -31,6 +31,7 @@ export default {
 	margin: 10px;
 	background-color: rgb(228, 228, 228);
 	border-radius: 5px;
+	cursor: pointer;
 }
 
 .seller-info {

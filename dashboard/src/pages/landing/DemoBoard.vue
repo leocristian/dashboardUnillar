@@ -1,30 +1,29 @@
 <template>
     <div class="demo">
-        <h1>Dashboard de demonstração</h1>
+        <h1>Hanking de vendedores</h1>
         <div class="podium">
             <div class="list" v-for="(seller, index) in sellers" v-bind:key="index">
-            <CardSeller :sellerName="seller.name" :totalValue="seller.total" v-on:click="showInfo"/>
-            <!-- <CardSeller :sellerName="'João'" :totalValue="'1.293'" v-on:click="showInfo"/>
-            <CardSeller :sellerName="'Pedro'" :totalValue="'850'" v-on:click="showInfo"/> -->
+            <CardSeller :sellerName="seller.name" :totalValue="seller.total" v-on:click="showInfo(seller)"/>
             </div>
         </div>
-        <YearSelection />
-        <MainButton class="geral" :msg="'Venda geral do ano'" />
+    <ChartBar />
     </div>
 </template>
 
 <script>
 
 import CardSeller from '../../components/CardSeller.vue'
-import MainButton from '../../components/button/MainButton.vue'
-import YearSelection from '../../components/YearSelection.vue'
+//import MainButton from '../../components/button/MainButton.vue'
+//import YearSelection from '../../components/YearSelection.vue'
+import ChartBar from '../../components/ChartBar.vue'
 
 export default {
     name: 'DemoBoard',
     components: {
         CardSeller,
-        MainButton,
-        YearSelection
+        //MainButton,
+        //YearSelection,
+        ChartBar
     },
     data() {
         return {
@@ -43,8 +42,8 @@ export default {
         }
     },
     methods: {
-        async showInfo() {
-            alert("oi")
+        async showInfo(seller) {
+            alert(`Vendedor ${seller.name} selecionado`)
         }
     }
 }
@@ -57,9 +56,6 @@ export default {
     justify-content: center;
     margin-top: 20px;
 }
-.geral {
-    margin-top: 500px;
-    margin-left: 450px;
-}
+
 
 </style>
