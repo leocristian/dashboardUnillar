@@ -1,8 +1,8 @@
 <template>
 <div class="selectdiv">
   <label>
-      <select>
-          <option selected> Selecione o ano </option>
+      <select v-model="yearSelected">
+          <option selected > Selecione o ano </option>
           <option>2019</option>
           <option>2020</option>
           <option>2021</option>
@@ -17,16 +17,9 @@ export default {
     name: 'YearSelection',
     data() {
         return {
-            yearSelected: '',
+            yearSelected: 'Selecione o ano',
         }
-    },
-    methods: {
-        async selectYear(year) {
-            this.yearSelected = year
-            console.log(year)
-        }
-    },
-
+    }
 }
 </script>
 

@@ -7,10 +7,20 @@
             </div>
         </div>
         <BarChart class="bar" />
-        <BarVerticalChart />
+        <MainButton class="btnPie" :msg="'Atualizar gráfico'" :click="updateChart"/>
+        <!-- <BarVerticalChart /> -->
         <div class="select-container">
-            <MainButton class="btnPie" :msg="'Atualizar gráfico'" />
-            <YearSelection class="selection-card" />
+            <div class="selectdiv">
+                <label>
+                    <select v-model="yearSelected">
+                        <option selected > Selecione o ano </option>
+                        <option>2019</option>
+                        <option>2020</option>
+                        <option>2021</option>
+                        <option>2022</option>
+                    </select>
+                </label>
+            </div>
         </div>
     </div>
 </template>
@@ -19,9 +29,8 @@
 
 import CardSeller from '../../components/CardSeller.vue'
 import MainButton from '../../components/button/MainButton.vue'
-import YearSelection from '../../components/YearSelection.vue'
 import BarChart from '../../components/charts/BarChart.vue'
-import BarVerticalChart from '../../components/charts/BarVerticalChart.vue'
+// import BarVerticalChart from '../../components/charts/BarVerticalChart.vue'
 // import PieChart from '../../components/charts/PieChart.vue'
 
 export default {
@@ -29,9 +38,8 @@ export default {
     components: {
         CardSeller,
         MainButton,
-        YearSelection,
         BarChart,
-        BarVerticalChart
+        // BarVerticalChart
         // PieChart
     },
     data() {
@@ -47,7 +55,8 @@ export default {
                     name: "amorim",
                     total: "4324",
                 }
-            ]
+            ],
+            yearSelected: 'Selecione o ano'
         }
     },
     methods: {
