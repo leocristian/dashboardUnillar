@@ -19,6 +19,13 @@ class DataController {
 
         return res.send( result.rows )
     }
+    async getAllData(req, res) {
+        const result = await client.query(`SELECT ano, vendas FROM vendedores`)
+
+        console.log(result.rows)
+
+        return res.send(result.rows)
+    }
     async getMonthInfo(req, res) {
         const { month } = req.params
 

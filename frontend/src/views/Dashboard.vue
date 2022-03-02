@@ -12,7 +12,7 @@
               </CCol>
               <CCol :sm="7" class="d-none d-md-block">
                 <CInputGroup class="mb-3">
-                    <CFormInput placeholder="Buscar vendedor" aria-label="Vendedor" v-model="seller" aria-describedby="button-addon2"/>
+                    <CFormInput placeholder="Buscar vendedor" aria-label="Vendedor" v-model="sellerName" aria-describedby="button-addon2"/>
                     <CButton type="button" color="primary" id="button-addon2"><CIcon :icon="'cilSearch'" v-on:click="searchSeller"/></CButton>
                 </CInputGroup>
               </CCol>
@@ -21,7 +21,7 @@
               <!-- <MainChartExample
                 style="height: 300px; max-height: 300px; margin-top: 40px"
               /> -->
-              <CChartBarExample style="height: 500px; width: 1000px; margin: 0 auto"/>
+              <CChartBarExample />
             </CRow>
           </CCardBody>
         </CCard>
@@ -50,6 +50,8 @@ import WidgetsStatsA from './widgets/WidgetsStatsTypeA.vue'
 import CChartPieExample from './charts/CChartPieExample.vue'
 // import BarChart from './charts/BarChart.vue'
 
+import api from '../services/api'
+
 export default {
   name: 'Dashboard',
   components: {
@@ -62,12 +64,14 @@ export default {
   },
    data() {
     return {
-      seller: ""
+      sellerName: ""
     }
   },
    methods: {
     async searchSeller() {
-      alert('Buscando vendedor ' + this.seller)
+      const result = await api.get(`/getInfo/${this.sellerName}`)
+
+      console.log(result.data)
     }
   }
 }
