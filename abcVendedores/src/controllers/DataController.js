@@ -1,28 +1,29 @@
 const client = require("../services/database")
+const formatData = require("./FormatData")
 
 class DataController {
+    
     async getInfo(req, res) {
         const { name } = req.params
         
         const result = await client.query( `SELECT * FROM vendedores WHERE vendedor = '${name}'`)
         
-        console.log(result.rows);
-
         return res.send( result.rows )
     }
     async getYearInfo(req, res) {
-        const { year, cod } = req.params
+        const { year } = req.params
         
-        const result = await client.query(`SELECT * FROM vendedores WHERE ano = '${year}' and cod = '${cod}'`)
+        const result = await client.query(`SELECT mes, vendas FROM vendedores WHERE ano = '${year}'`)
         
-        console.log(result.rows);
+        const dataFormated = await formatData.sumByMonths(result.rows)
 
-        return res.send( result.rows )
+        console.log(`Vendas do ano de ${year}`)
+        console.log(dataFormated)
+
+        return res.send( dataFormated )
     }
     async getAllData(req, res) {
-        const result = await client.query(`SELECT ano, vendas FROM vendedores`)
-
-        console.log(result.rows)
+        const result = await client.query(`SELECT ano, mes, vendas FROM vendedores`)
 
         return res.send(result.rows)
     }
@@ -30,8 +31,6 @@ class DataController {
         const { month } = req.params
 
         const result = await client.query(`SELECT * FROM vendedores WHERE mes = '${month}'`)
-        
-        console.log(result.rows);
 
         return res.send( result.rows )
     }

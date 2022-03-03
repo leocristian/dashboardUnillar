@@ -14,6 +14,11 @@ export default {
   components: { CChartBar },
   data() {
     return {
+      dataFormated: {
+        labels: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho',
+                'Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        datasets: []
+      },
       allData: {
         labels: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho',
                 'Agosto','Setembro','Outubro','Novembro','Dezembro'],
@@ -39,7 +44,8 @@ export default {
   },
   mounted() {
     api.get('/getAllData').then((response) => {
-      console.log(response.data)
+      this.allData.datasets = response.data
+      console.log(this.allData)
     }).catch((error) => {
       console.log("Erro na requisição: " + error);
     })
