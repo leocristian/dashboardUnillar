@@ -21,7 +21,8 @@
               <!-- <MainChartExample
                 style="height: 300px; max-height: 300px; margin-top: 40px"
               /> -->
-              <CChartBarExample />
+              <ChartBar />
+              <!-- <CChartBarExample /> -->
             </CRow>
           </CCardBody>
         </CCard>
@@ -44,11 +45,12 @@
 <script>
 
 // import MainChartExample from './charts/MainChartExample'
-import CChartBarExample from './charts/CChartBarExample.vue'
+// import CChartBarExample from './charts/CChartBarExample.vue'
 import WidgetsStatsA from './widgets/WidgetsStatsTypeA.vue'
 // import WidgetsStatsD from './widgets/WidgetsStatsTypeD.vue'
 import CChartPieExample from './charts/CChartPieExample.vue'
 // import BarChart from './charts/BarChart.vue'
+import ChartBar from './charts/ChartBar.vue'
 
 import api from '../services/api'
 
@@ -56,8 +58,8 @@ export default {
   name: 'Dashboard',
   components: {
     // MainChartExample,
-    CChartBarExample,
-    // BarChart,
+    // CChartBarExample,
+    ChartBar,
     WidgetsStatsA,
     // WidgetsStatsD,
     CChartPieExample,
@@ -68,10 +70,12 @@ export default {
     }
   },
    methods: {
-    async searchSeller() {
-      const result = await api.get(`/getInfo/${this.sellerName}`)
-
-      console.log(result.data)
+    searchSeller() {
+      api.get(`/getInfo/${this.sellerName}`).then((response) => {
+        console.log(response.data)
+      }).catch((error) => {
+        console.log(`Erro na requisição: ${error}`)
+      })
     }
   }
 }
