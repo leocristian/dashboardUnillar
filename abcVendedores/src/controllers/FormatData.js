@@ -1,17 +1,23 @@
 const _ = require("underscore")
 
+const client = require("../services/database")
+
 class FormatData {
     async formatByYears(data) {
+
         const years = ["2020", "2021", "2022"]
-        const dataFormated = []
-        var objFormated = {}
+        const finalData = []
 
         for (let index = 0; index < years.length; index++) {
             
-            objFormated = { label: years[index], backgroundColor: '#2452BD', data: [] }
-            
+            const dataQuery = await client.query(`SELECT mes, vendas FROM vendedores WHERE ano = '${years[index]}'`)
+            const dataFormated = await this.sumByMonths(dataQuery.rows)
 
+            const objFormated = { label: years[index], backgroundColor: '#2452BD', data: dataFormated }
+            
+            finalData.push(objFormated)
         }
+        return finalData
     }
     async sumByMonths(data) {
         const months = ["jane", "feve", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "deze"]

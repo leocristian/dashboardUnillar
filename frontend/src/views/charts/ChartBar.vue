@@ -9,7 +9,7 @@ import { BarChart } from 'vue-chart-3'
 import { Chart } from 'chart.js'
 
 const dataValues = ref([
-  [3, 3, 3, 3, 3, 40, 39, 80, 40, 20, 12, 12],
+  [3, 3, 30, 3, 3, 40, 39, 80, 40, 20, 12, 12],
   [64, 2, 23, 32, 40, 12, 23, 78, 23, 22, 4, 12]
 ])
 
