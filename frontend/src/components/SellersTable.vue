@@ -10,21 +10,11 @@
             </tr>
             </thead>
             <tbody>
-
+            <div v-for="(item, index) in sellersData" v-bind:key="index"> </div>
             <tr>
-                <th scope="row">{{ sellersData[0].pos }}</th>
-                <td>{{ sellersData[0].name }}</td>
-                <td>{{ sellersData[0].total }}</td>
-            </tr>
-            <tr>
-                <th scope="row">{{ sellersData[1].pos }}</th>
-                <td>{{ sellersData[1].name }}</td>
-                <td>{{ sellersData[1].total }}</td>
-            </tr>
-            <tr>
-                <th scope="row">{{ sellersData[2].pos }}</th>
-                <td>{{ sellersData[2].name }}</td>
-                <td>{{ sellersData[2].total }}</td>
+                <th scope="row">{{ item.pos }}</th>
+                <td>{{ item.name }}</td>
+                <td>{{ item.total }}</td>
             </tr>
             </tbody>
         </table>
