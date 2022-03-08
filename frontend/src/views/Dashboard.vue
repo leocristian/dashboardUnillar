@@ -32,10 +32,8 @@
     <CRow>
       <CCol :md="12">
         <CCard class="mb-4">
-          <CCardHeader> Vendedores </CCardHeader>
-          <CRow>
-            <CChartPieExample style="height: 400px; width: 400px" />
-          </CRow>
+          <CCardHeader> Lista de vendedores </CCardHeader>
+            <SellersTable />
         </CCard>
       </CCol>
     </CRow>
@@ -47,8 +45,9 @@
 // import MainChartExample from './charts/MainChartExample'
 import CChartBarExample from './charts/CChartBarExample.vue'
 import WidgetsStatsA from './widgets/WidgetsStatsTypeA.vue'
+import SellersTable from '../components/SellersTable.vue'
 // import WidgetsStatsD from './widgets/WidgetsStatsTypeD.vue'
-import CChartPieExample from './charts/CChartPieExample.vue'
+// import CChartPieExample from './charts/CChartPieExample.vue'
 // import BarChart from './charts/BarChart.vue'
 // import ChartBar from './charts/ChartBar.vue'
 
@@ -59,10 +58,11 @@ export default {
   components: {
     // MainChartExample,
     CChartBarExample,
+    SellersTable,
     // ChartBar,
     WidgetsStatsA,
     // WidgetsStatsD,
-    CChartPieExample,
+    // CChartPieExample,
   },
    data() {
     return {
