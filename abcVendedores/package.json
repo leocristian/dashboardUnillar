@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon src/app.js"
+    "server": "nodemon src/app.js",
+    "database": "node src/createDatabase.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.3",
+    "json-to-table": "^4.2.1",
     "node-xlsx": "^0.21.0",
     "nodemon": "^2.0.15",
     "pg": "^8.7.3",

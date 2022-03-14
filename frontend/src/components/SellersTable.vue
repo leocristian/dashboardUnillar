@@ -1,38 +1,43 @@
 <template lang="">
     <CRow style="align-self: center; width: 100%; margin-left: 10%">
     <!-- <CChartPieExample style="height: 400px; width: 400px" /> -->
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Vendedor</th>
-                <th scope="col">Vendas</th>
-            </tr>
-            </thead>
+        <CTable class="table table-hover">
+            <CTableHead>
+            <CTableRow>
+                <CTableHeaderCell scope="col">#</CTableHeaderCell >
+                <CTableHeaderCell scope="col">Vendedor</CTableHeaderCell >
+                <CTableHeaderCell scope="col">Vendas</CTableHeaderCell >
+            </CTableRow>
+            </CTableHead>
             <tbody>
-            <div v-for="(item, index) in sellersData" v-bind:key="index"> </div>
-            <tr>
-                <th scope="row">{{ item.pos }}</th>
-                <td>{{ item.name }}</td>
-                <td>{{ item.total }}</td>
-            </tr>
+            <CTableRow v-for="(item, index) in sellersData" v-bind:key="index">
+                <CTableHeaderCell scope="row">{{ index }}</CTableHeaderCell>
+                <CTableDataCell>{{ item.vendedor }}</CTableDataCell>
+                <CTableDataCell>R$ {{ item.vendas }}</CTableDataCell>
+            </CTableRow>
             </tbody>
-        </table>
+        </CTable>
     </CRow>
 </template>
+
 <script>
+
+import api from '../services/api'
+
 export default {
     name: "SellersTable",
     data() {
         return {
-            sellersData: [
-                { pos: "1", name: "Mara", total: "R$7.234,00" },
-                { pos: "2", name: "José", total: "R$6.874,00" },
-                { pos: "3", name: "Pedro", total: "R$4.324,00" },
-                { pos: "4", name: "Teste1", total: "R$3.524,00" },
-                { pos: "5", name: "Teste2", total: "R$2.724,00" }
-            ]
+            sellersData: []
         }
+    },
+    mounted() {
+        api.get('/getSellersInfo').then((response) => {
+            console.log(response.data)
+            this.sellersData = response.data
+        }).catch((error) => {
+            console.log("Erro na requisição (getAllData): " + error)
+        })
     }
 }
 </script>

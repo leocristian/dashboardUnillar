@@ -74,7 +74,7 @@ export default {
       api.get(`/getInfo/${this.sellerName}`).then((response) => {
         console.log(response.data)
       }).catch((error) => {
-        console.log(`Erro na requisição: ${error}`)
+        console.log(`Erro na requisição (searchSeller): ${error}`)
       })
     }
   }

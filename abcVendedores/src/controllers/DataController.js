@@ -50,6 +50,13 @@ class DataController {
         console.log("maior venda: " + Math.max(vendas))
         return res.send(result.rows)
     }
+    async getSellersInfo(req, res) {
+        const result = await client.query('SELECT vendedor, vendas FROM vendedores')
+        
+        const resultFormated = await formatData.groupBySeller(result.rows)
+
+        return res.send(resultFormated)
+    }
 }
 
 module.exports = new DataController()

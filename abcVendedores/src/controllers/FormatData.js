@@ -1,4 +1,5 @@
 const _ = require("underscore")
+const jsonToTable = require("json-to-table")
 
 const client = require("../services/database")
 
@@ -49,6 +50,9 @@ class FormatData {
         }, 0)
 
         return result
+    }
+    async groupBySeller(data) {
+        return data
     }
 }
 

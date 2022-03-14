@@ -58,8 +58,9 @@ async function populateDB(filename, tablename) {
 }
 
 async function getData(filename) {
-    const plan = await xlsx.parse(`./services/data/${filename}`)
+    const plan = await xlsx.parse(`C:\\Users\\Leonardo\\Desktop\\github\\dashboardUnillar\\abcVendedores\\src\\${filename}`)
     return plan[0].data
 }
 
-module.exports = { initializeDB, populateDB }
+// initializeDB("vendedores")
+// populateDB("ABC_vendedores2.xls", "vendedores")
